@@ -1,0 +1,21 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana-plugins:/var/lib/grafana/plugins:rw
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_INSTALL_PLUGINS=hamedkarbasi93-nodegraphapi-datasource
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=hamedkarbasi93-nodegraphapi-datasource
+  data-api:
+    # Live reload
+    image: cosmtrek/air
+    working_dir: /app
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/app
