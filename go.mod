@@ -1,4 +1,4 @@
-module github.com/tokibi/grafana-node-graph
+module github.com/tokibi/grafana-node-graph-api-example
 
 go 1.18
 
